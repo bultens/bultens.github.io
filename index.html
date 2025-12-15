@@ -28,6 +28,9 @@
             padding: 20px 5%;
             background-color: var(--secondary-bg);
             border-bottom: 1px solid #444;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
         .logo {
             font-family: 'Montserrat', sans-serif;
@@ -105,7 +108,9 @@
             text-align: center;
             text-decoration: none;
             color: inherit;
-            display: block;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         .card:hover {
             transform: translateY(-5px);
@@ -118,6 +123,9 @@
         }
         .card-content {
             padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
         .card-content h3 {
             margin: 0 0 10px 0;
@@ -128,6 +136,17 @@
             margin: 0;
             font-size: 0.9em;
             color: #bbb;
+        }
+        /* Etikett för status (t.ex. under uppbyggnad) */
+        .badge {
+            display: inline-block;
+            background-color: #e67e22;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.7em;
+            margin-bottom: 10px;
+            font-weight: bold;
         }
         footer {
             text-align: center;
@@ -145,6 +164,24 @@
         footer .social-links a:hover {
             color: var(--accent-color);
         }
+        
+        /* Mobilanpassning för menyn */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+            nav a, .lang-switch {
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+        }
     </style>
 </head>
 <body onload="setLang('sv');">
@@ -154,6 +191,7 @@
             <a href="https://bultens.github.io/CV/" data-sv="CV" data-en="CV">CV</a>
             <a href="#sidor" data-sv="Sidor" data-en="Pages">Sidor</a>
             <a href="https://bultens.github.io/links/" data-sv="Länkar" data-en="Links">Länkar</a>
+            <a href="#webdesign" data-sv="Webbdesign" data-en="Web Design">Webbdesign</a>
             <a href="#contact" data-sv="Kontakt" data-en="Contact">Kontakt</a>
             <button class="lang-switch" onclick="toggleLang()">EN</button>
         </nav>
@@ -207,11 +245,37 @@
         </div>
     </div>
 
+    <div class="container" id="webdesign">
+        <h2 data-sv="Webbdesign & Projekt" data-en="Web Design & Projects">Webbdesign & Projekt</h2>
+        <div class="card-grid">
+            <a href="https://bultens.net/kumlaskytte/" target="_blank" class="card">
+                <img src="https://placehold.co/400x180/2b2b2b/FFF?text=Kumla+Skytte" alt="Kumla Skytteförening" width="400" height="180">
+                <div class="card-content">
+                    <h3>Kumla Skytteförening</h3>
+                    <p data-sv="Ett komplett administrativt system med medlemsregister, bokningssystem, resultathantering och nyhetsflöde." 
+                       data-en="A complete administrative system featuring member registry, booking system, result management, and news feed.">
+                       Ett komplett administrativt system med medlemsregister, bokningssystem, resultathantering och nyhetsflöde.
+                    </p>
+                </div>
+            </a>
+
+            <a href="https://bultens.net/vykort" target="_blank" class="card">
+                <img src="https://placehold.co/400x180/2b2b2b/FFF?text=Vykortsbutik" alt="Vykortsbutik" width="400" height="180">
+                <div class="card-content">
+                    <span class="badge" data-sv="Under Uppbyggnad" data-en="Under Construction">Under Uppbyggnad</span>
+                    <h3 data-sv="Min Vykortsbutik" data-en="My Postcard Shop">Min Vykortsbutik</h3>
+                    <p data-sv="En e-handel för unika vykort och trycksaker." 
+                       data-en="An e-commerce store for unique postcards and prints.">
+                       En e-handel för unika vykort och trycksaker.
+                    </p>
+                </div>
+            </a>
+        </div>
+    </div>
+
     <footer id="contact">
-        <p data-sv="Kontakta mig på: " data-en="Contact me at: ">Kontakta mig på: </p>
+        <p data-sv="Kontakta mig på: " data-en="Contact me at: ">Kontakta mig på: <a href="mailto:mats@bultens.net">mats@bultens.net</a></p>
         <div class="social-links">
-            <a href="mailto:mats@bultens.net">
-                <img src="images/mail.png?text=mats@bultens.net" width="50" height="50"></a>
             <a href="https://www.linkedin.com/in/matsjohnsson1972/" target="_blank">
                 <img src="images/linkedIn_logo.png?text=LinkedIn" width="50" height="50"></a>
             <a href="https://www.deviantart.com/macsaidesign" target="_blank">
@@ -249,6 +313,4 @@
         });
     </script>
 </body>
-
 </html>
-
